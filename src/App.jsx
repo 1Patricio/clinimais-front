@@ -1,16 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Pacientes from "./pages/Pacientes";
-import Medicos from "./pages/Medicos";
-import Consultas from "./pages/Consultas";
+import AppRoutes from './routes';
 
-function App(){
-  return( <BrowserRouter>
-    <Routes>
-      <Route path="/pacientes" element={<Pacientes />}/>
-      <Route path="/medicos" element={<Medicos />}/>
-      <Route path="/consultas" element={<Consultas />}/>
-    </Routes>
-  </BrowserRouter>
+function App() {
+  return (
+    <div className="App">
+      <AppRoutes />
+    </div>
   );
 }
 
