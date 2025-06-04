@@ -26,6 +26,7 @@ export default function PacientesList() {
                 {pacientes.map(p => (
                     <li key={p.id}>
                         {p.nome} - {p.cpf}
+                        <Link to={`/pacientes/${p.id}`}>Detalhes</Link>
                         <Link to={`/pacientes/editar/${p.id}`}>Editar</Link>
                         <button type="button" onClick={() => handleDelete(p.id)}>Excluir</button>                    </li>
                 ))}
