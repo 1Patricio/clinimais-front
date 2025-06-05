@@ -3,8 +3,6 @@ import { deletePaciente, getPacientes } from "../../services/pacienteService";
 import { Link } from "react-router-dom";
 
 export default function PacientesList() {
-    console.log("Opa");
-
     const [pacientes, setPacientes] = useState([]);
 
     useEffect(() => {
@@ -12,7 +10,6 @@ export default function PacientesList() {
     }, []);
 
     const handleDelete = (id) => {
-        console.log(id)
         deletePaciente(id).then(() => setPacientes(pacientes.filter(p => p.id !== id)));
     };
 
