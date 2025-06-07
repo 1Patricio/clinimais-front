@@ -6,6 +6,8 @@ import { PacientesDetail } from './pages/Pacientes/PacientesDetail';
 import MedicoList from './pages/Medicos/MedicosList';
 import MedicoForm from './pages/Medicos/MedicoForm';
 import { MedicoDetail } from './pages/Medicos/MedicoDetail';
+import ConsultaForm from './pages/Consultas/ConsultaForm';
+import ConsultaList from './pages/Consultas/ConsultasList';
 
 export default function AppRoutes(){
     return (
@@ -21,9 +23,9 @@ export default function AppRoutes(){
                 <Route path="/medicos/editar/:id" element={<MedicoForm />} />
                 <Route path="/medicos/:id" element={<MedicoDetail />} />
 
-                {/* <Route path="/consultas" element={<ConsultaList />} />
+                <Route path="/consultas" element={<ConsultaList />} />
                 <Route path="/consultas/novo" element={<ConsultaForm />} />
-                <Route path="/consultas/editar/:id" element={<ConsultaForm />} /> */}
+                <Route path="/consultas/editar/:id" element={<ConsultaForm />} />
             </Routes>
         </Router>
     );
