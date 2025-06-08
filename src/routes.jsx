@@ -8,6 +8,7 @@ import MedicoForm from './pages/Medicos/MedicoForm';
 import { MedicoDetail } from './pages/Medicos/MedicoDetail';
 import ConsultaForm from './pages/Consultas/ConsultaForm';
 import ConsultaList from './pages/Consultas/ConsultasList';
+import Home from './pages/Home';
 
 export default function AppRoutes(){
     return (
@@ -26,6 +27,8 @@ export default function AppRoutes(){
                 <Route path="/consultas" element={<ConsultaList />} />
                 <Route path="/consultas/novo" element={<ConsultaForm />} />
                 <Route path="/consultas/editar/:id" element={<ConsultaForm />} />
+
+                <Route path="/" element={<Home />}/>
             </Routes>
         </Router>
     );

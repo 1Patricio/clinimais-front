@@ -9,9 +9,9 @@ export default function ConsultaForm() {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         data: '',
-        horario: '',
-        pacienteId: '',
-        medicoId: '',
+        hora: '',
+        paciente: '',
+        medico: '',
         observacoes: ''
     });
     const [medicos, setMedicos] = useState([]);
@@ -20,16 +20,32 @@ export default function ConsultaForm() {
     useEffect(() => {
         getMedicos().then(res => setMedicos(res.data));
         getPacientes().then(res => setPacientes(res.data));
-        if (id) getConsultaById(id).then(res => setForm(res.data));
+        if (id) {
+            getConsultaById(id).then(res => {
+                const consulta = res.data;
+                setForm({
+                    ...consulta,
+                    paciente: consulta.paciente?.id || '',
+                    medico: consulta.medico?.id || ''
+                });
+            });
+        }
     }, [id]);
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        const action = id ? updateConsulta(id, form) : createConsulta(form);
-        action.then(() => navigate('/consultas'));
+    e.preventDefault();
+    const consultaPayload = {
+        ...form,
+        paciente: { id: form.paciente },
+        medico: { id: form.medico }
     };
+    const action = id
+        ? updateConsulta(id, consultaPayload)
+        : createConsulta(consultaPayload);
+    action.then(() => navigate('/consultas'));
+};
 
     return (
         <form onSubmit={handleSubmit}>
@@ -42,15 +58,15 @@ export default function ConsultaForm() {
                 onChange={handleChange}
             />
             <input
-                name="horario"
+                name="hora"
                 type="time"
                 placeholder="Horário"
-                value={form.horario}
+                value={form.hora}
                 onChange={handleChange}
             />
             <select
-                name="pacienteId"
-                value={form.pacienteId}
+                name="paciente"
+                value={form.paciente}
                 onChange={handleChange}
                 required
             >
@@ -60,13 +76,12 @@ export default function ConsultaForm() {
                 ))}
             </select>
             <select
-                name="medicoId"
-                value={form.medicoId}
+                name="medico"
+                value={form.medico}
                 onChange={handleChange}
                 required
             >
-                <option value={form.medicoId}>Selecione o médico</option>
-                {/* TODO: Adicionar opções adicionais ou lógica extra para seleção de médicos, se necessário */}
+                <option value="">Selecione o médico</option>
                 {medicos.map(m => (
                     <option key={m.id} value={m.id}>{m.nome}</option>
                 ))}

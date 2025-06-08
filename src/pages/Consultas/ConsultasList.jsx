@@ -18,7 +18,7 @@ export default function ConsultaList(){
             <h2>
                 Consultas
             </h2>
-            <Link to="/consultas/novo">Novo Médico</Link>
+            <Link to="/consultas/novo">Nova Consulta</Link>
             <ul>
                 {consultas.map(p => (
                     <li key={p.id}>
