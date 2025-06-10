@@ -19,18 +19,19 @@ export default function Sidebar({ open, onClose }) {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={onClose}>
      
-      <Box sx={{ p: 1.5, fontWeight: 'bold', fontSize: 20}}>
+      <Box sx={{ p: 1.5, fontWeight: 'bold', fontSize: 20}} display="flex"> 
          <IconButton
             edge="start"
             color="inherit"
             aria-label="menu"
             onClick={onClose}
             sx={{ mr: 2, textAlign:'left'}}
+            style={{marginLeft: '12px', marginTop:'5px'}}
           >
             <MenuIcon />
           
       </IconButton>
-        <img src="src/assets/clinimais-horizontal.jpeg" alt="" style={{height:"50px", width:"120px"}}/>      
+        <img src="src/assets/clinimais-horizontal.jpeg" alt="" style={{height:"60%", width:"60%"}}/>      
         </Box>
       <Divider />
       <List>

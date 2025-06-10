@@ -20,7 +20,7 @@ function App() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <AppBar position="static">
+      <AppBar position="static" color="white">
         <Toolbar>
           <IconButton
             edge="start"
@@ -31,7 +31,7 @@ function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Button color="inherit" component="a" href="/">CliniMais</Button>
+          <img src="src/assets/clinimais-horizontal.jpeg" alt="" style={{height:"10%", width:"10%"}}/>      
         </Toolbar>
       </AppBar>
       <Sidebar open={isSidebarOpen} onClose={handleToggleSidebar} />
