@@ -8,30 +8,30 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import { Link } from 'react-router-dom';
 
-export default function ConsultaCard() {
+export default function MedicoCard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image="src/assets/consulta-card.webp"
+          image="src/assets/clinimais-medicos.avif"
           alt="Agendamento de consulta"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Agendamento de Consultas
+            Cadastrar Médicos
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Priorize o seu bem-estar
+            Você em boas mãos
             <br />
-            Marque consultas regulares e previna doenças
+            Confie em profissionais que cuidam de você
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" component= {Link} to="/consultas">
-          Marque uma consulta
+        <Button size="small" color="primary" component= {Link} to="/medicos">
+          Cadastrar Médico
         </Button>
       </CardActions>
     </Card>
