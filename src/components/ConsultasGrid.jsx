@@ -29,7 +29,7 @@ export default function ConsultasGrid() {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} />
+      <DataGrid rows={rows} columns={columns} autoPageSize/>
     </div>
   );
 }
