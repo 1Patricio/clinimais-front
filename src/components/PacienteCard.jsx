@@ -18,7 +18,7 @@ export default function PacienteCard() {
           alt="Cadastrar Paciente"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             Cadastrar Paciente
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>

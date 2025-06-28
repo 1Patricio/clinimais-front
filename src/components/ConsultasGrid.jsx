@@ -28,8 +28,17 @@ export default function ConsultasGrid() {
   ];
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} autoPageSize/>
+    <div style={{ height: 400, width: '98%', margin: 'auto' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        autoPageSize
+        sx={{
+          '& .MuiDataGrid-columnHeaderTitle': {
+            fontWeight: 'bold',
+          },
+        }}
+      />
     </div>
   );
 }

@@ -19,7 +19,7 @@ export default function MedicoCard() {
           alt="Agendamento de consulta"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             Cadastrar Médicos
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
