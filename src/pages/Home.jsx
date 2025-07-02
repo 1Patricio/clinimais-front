@@ -3,6 +3,8 @@ import MedicoCard from "../components/MedicoCard";
 import PacienteCard from "../components/PacienteCard";
 import RenderComponent from "../components/ConsultasGrid";
 import ConsultasGrid from "../components/ConsultasGrid";
+import Card from "../components/CardProps";
+import CardProps from "../components/CardProps";
 
 
 export default function Home() {
@@ -12,6 +14,7 @@ export default function Home() {
                 <div style={{ display: "flex", justifyContent: "space-evelyn" }}>
                     <div style={{ margin: "10px" }}>
                         <ConsultaCard />
+                        <CardProps title={"Criar Consulta"} secondary={"Teste"} entity={"Consulta"} imageCard={"src/assets/clinimais-paciente.jpg"}/>
                     </div>
                     <div style={{ margin: "10px" }}>
                         <MedicoCard />
