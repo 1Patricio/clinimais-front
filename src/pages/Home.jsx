@@ -14,8 +14,13 @@ export default function Home() {
                 <div style={{ display: "flex", justifyContent: "space-evelyn" }}>
                     <div style={{ margin: "10px" }}>
                         <ConsultaCard />
-                        <CardProps title={"Criar Consulta"} secondary={"Teste"} entity={"Consulta"} imageCard={"src/assets/clinimais-paciente.jpg"}/>
-                    </div>
+                        <CardProps
+                            title="Criar Consulta"
+                            secondary="Teste"
+                            entity="Consulta"
+                            imageCard="src/assets/clinimais-paciente.jpg"
+                            to="/consultas/novo"
+                        />                    </div>
                     <div style={{ margin: "10px" }}>
                         <MedicoCard />
                     </div>

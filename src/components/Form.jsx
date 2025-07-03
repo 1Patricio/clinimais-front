@@ -3,24 +3,33 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getMedicoByid, updateMedico, createMedico } from '../services/medicoService';
 import { Typography } from '@mui/material';
 
-export default function Form({ entity }) {
+export default function Form({
+  entity,
+  initialState,
+  getById,
+  update,
+  create,
+  fields,
+  redirectTo
+}) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ nome: '', crm: '', especialidade: '', telefone: '' });
+  const [form, setForm] = useState(initialState);
 
   useEffect(() => {
-    if (id) getMedicoByid(id).then(res => setForm(res.data));
-  }, [id]);
+    if (id && getById) {
+      getById(id).then(res => setForm(res.data));
+    }
+  }, [id, getById]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const action = id ? updateMedico(id, form) : createMedico(form);
-    action.then(() => navigate('/medicos'));
+    const action = id ? update(id, form) : create(form);
+    action.then(() => navigate(redirectTo));
   };
 
   return (
@@ -43,38 +52,23 @@ export default function Form({ entity }) {
       <Typography variant="h5" align="center" fontWeight="bold" color="#279390" gutterBottom>
         {id ? `Editar ${entity}` : `Cadastrar ${entity}`}
       </Typography>
-      <TextField
-        name="nome"
-        label="Nome"
-        value={form.nome}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
-      <TextField
-        name="crm"
-        label="CRM"
-        value={form.crm}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
-      <TextField
-        name="especialidade"
-        label="Especialidade"
-        value={form.especialidade}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
-      <TextField
-        name="telefone"
-        label="Telefone"
-        value={form.telefone}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
+      {fields.map((field) => (
+        <TextField
+          key={field.name}
+          name={field.name}
+          label={field.label}
+          value={form[field.name]}
+          onChange={handleChange}
+          required={field.required}
+          fullWidth
+          type={field.type || "text"}
+          slotProps={{
+            inputLabel: field.type && field.type !== "text"
+              ? { shrink: true }
+              : undefined
+          }} // Serve para retirar um bug visual quando o tipo do campo não é texto
+        />
+      ))}
       <Button
         type="submit"
         variant="contained"
