@@ -21,12 +21,12 @@ export default function CardProps({
   title,
   subtitle,
   secondary,
-  entity,
   imageCard,
+  action,
   to = '/'
 }) {
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: 3, boxShadow: 3 }}>
+    <Card sx={{ maxWidth: 345, boxShadow: 3 }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -35,7 +35,7 @@ export default function CardProps({
           alt={title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" component="div" fontWeight="bold">
+          <Typography gutterBottom variant="h6" component="div" >
             {title}
           </Typography>
           {(subtitle || secondary) && (
@@ -53,9 +53,9 @@ export default function CardProps({
           color="primary"
           component={Link}
           to={to}
-          sx={{ fontWeight: 'bold', borderRadius: 2 }}
+          sx={{ borderRadius: 2 }}
         >
-          {entity}
+          {action}
         </Button>
       </CardActions>
           </Card>
